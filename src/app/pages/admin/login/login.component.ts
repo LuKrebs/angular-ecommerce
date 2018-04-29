@@ -20,10 +20,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getAuth().subscribe(auth => {
-      if (auth) {
-        this.router.navigate(['/dashboard']);
-      }
-    })
+      if (auth) this.router.navigate(['/dashboard']);
+    });
   }
 
   onSubmit() {

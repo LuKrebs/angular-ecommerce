@@ -13,6 +13,9 @@ import { AuthGuard } from './guards/auth.guard';
 // Flash messages
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
+// Directive, Pipes
+import { CurrencyMaskModule } from "ng2-currency-mask";
+
 // Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -43,11 +46,20 @@ import { FooterComponent } from './shared-components/footer/footer.component';
 import { SidebarListComponent } from './shared-components/sidebar/sidebar-list/sidebar-list.component';
 import { ToolbarSocialMediaLinksComponent } from './shared-components/toolbar/toolbar-social-media-links/toolbar-social-media-links.component';
 import { BannerComponent } from './pages/ecommerce/home/banner/banner.component';
+import { NewComponent } from './pages/admin/products/new/new.component';
+import { ShowComponent } from './pages/admin/products/show/show.component';
+import { IndexComponent } from './pages/admin/products/index/index.component';
+import { ProductsService } from './services/products.service';
+import { EditComponent } from './pages/admin/products/edit/edit.component';
 
 // Routes
 const appRoutes: Routes = [
   { path: 'admin', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
+  { path: 'products', component: IndexComponent, canActivate:[AuthGuard] },
+  { path: 'products/new', component: NewComponent, canActivate:[AuthGuard] },
+  { path: 'products/edit/:productId', component: EditComponent, canActivate:[AuthGuard] },
+  { path: 'product/:productId', component: ShowComponent, canActivate:[AuthGuard] },
   { path: '', component: HomeComponent },
   { path: '**', component: AppComponent }
 ];
@@ -64,6 +76,10 @@ const appRoutes: Routes = [
     SidebarListComponent,
     ToolbarSocialMediaLinksComponent,
     BannerComponent,
+    NewComponent,
+    ShowComponent,
+    IndexComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +98,8 @@ const appRoutes: Routes = [
     ),
     // Flash messages
     FlashMessagesModule.forRoot(),
+    // CurrencyMask
+    CurrencyMaskModule,
     // Angular Material Components
     MatFormFieldModule,
     MatInputModule,
@@ -90,7 +108,7 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatIconModule,
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

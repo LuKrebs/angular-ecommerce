@@ -1,0 +1,62 @@
+<div class="container" *ngIf="product">
+
+  <div class="row show-product">
+    <div class="col-sm-12">
+      <a routerLink="/products/edit/{{productId}}" class="btn btn-primary">Editar produto</a>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <form #productForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input readonly type="text" class="form-control" name="name" [(ngModel)]="product.name" id="name">
+      </div>
+
+      <div class="form-group">
+        <label for="price">Preço</label>
+        <input readonly class="form-control" [(ngModel)]="product.price" name="price" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' ,align: 'left' }">
+
+      </div>
+
+      <div class="form-group">
+        <label for="qty">Quantidade</label>
+        <input readonly type="text" class="form-control" name="qty" [(ngModel)]="product.qty" id="qty">
+      </div>
+
+      <div class="form-group">
+        <label for="available">Disponível</label>
+        <select readonly disabled class="form-control" id="available" [(ngModel)]="product.available" name="available" required>
+          <option *ngFor="let option of options" [value]="option">{{option}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Categoria</label>
+        <select readonly disabled class="form-control" id="available" name="category" [(ngModel)]="product.category" required>
+          <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Upload FOTOS</label>
+        <input readonly type="file" (change)="uploadFile($event)" />
+        <div *ngIf="uploadingImg">Aguarde...</div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Cadastrar
+      </button>
+    </form>
+
+  </div>
+
+  <div class="row show-product-photos" *ngIf="product.photos">
+    <div class="col-sm-3" *ngFor="let photoUrl of product.photos">
+      <img [src]="photoUrl" class="img-responsive img-thumbnail" [alt]="defaultAltImage">
+    </div>
+  </div>
+
+</div>

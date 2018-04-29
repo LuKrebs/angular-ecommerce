@@ -1,0 +1,59 @@
+<div class="container new-product" *ngIf="product">
+  <h1>Editar produto</h1>
+
+  <div class="row">
+
+    <form #productForm="ngForm" (ngSubmit)="updateProduct()">
+
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="product.name" id="name">
+      </div>
+
+      <div class="form-group">
+        <label for="price">Preço</label>
+        <input class="form-control" [(ngModel)]="product.price" name="price" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' ,align: 'left' }">
+
+      </div>
+
+      <div class="form-group">
+        <label for="qty">Quantidade</label>
+        <input type="text" class="form-control" name="qty" [(ngModel)]="product.qty" id="qty">
+      </div>
+
+      <div class="form-group">
+        <label for="available">Disponível</label>
+        <select class="form-control" id="available" [(ngModel)]="product.available" name="available" required>
+          <option *ngFor="let option of options" [value]="option">{{option}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Categoria</label>
+        <select class="form-control" id="available" name="category" [(ngModel)]="product.category" required>
+          <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Upload FOTOS</label>
+        <input type="file" (change)="uploadFile($event)" />
+        <div *ngIf="uploadingImg">Aguarde...</div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Atualizar
+      </button>
+    </form>
+
+  </div>
+
+  <div class="row edit-product-photos" *ngIf="product.photos">
+    <div class="col-sm-3" *ngFor="let photoUrl of product.photos">
+      <div class="photo-section">
+        <img (click)="deletePhoto(photoUrl)" [src]="photoUrl" class="img-responsive img-thumbnail" [alt]="defaultAltImage">
+        <a (click)="deletePhoto(photoUrl)" type="button" class="btn btn-danger">Remove</a>
+      </div>
+    </div>
+  </div>
+
+</div>

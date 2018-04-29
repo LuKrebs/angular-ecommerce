@@ -8,8 +8,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class SidebarListComponent implements OnInit {
   @Output() toogledSidebar = new EventEmitter<any>();
 
-  logoSrc = 'assets/img/shared/logo-mama-hostel.png';
-  defaultAltImage = 'Mama Brasil Hostel';
+  logoSrc = 'assets/img/shared/logo.png';
+  defaultAltImage = "Sonja Baby's | A beleza está nos detalhes";
 
   constructor() { }
 

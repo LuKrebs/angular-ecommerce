@@ -1,0 +1,29 @@
+<div class="continer-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <form (submit)="onSubmit()">
+        <mat-form-field class="">
+          <input 
+            matInput 
+            placeholder="Email" 
+            [(ngModel)]="email" 
+            type="email"
+            name="email">
+        </mat-form-field>
+
+        <mat-form-field class="">
+          <input 
+            matInput 
+            placeholder="Password" 
+            [(ngModel)]="password" 
+            type="password"
+            name="password">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">Login</button>
+      </form>
+
+    </div>
+  </div>
+</div>

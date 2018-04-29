@@ -1,0 +1,22 @@
+<a routerLink="/" class="sidebar-links" (click)="toogleSidebar($event)">
+  <img [src]="logoSrc" [alt]="defaultAltImage" class="sidebar-logo">
+</a>
+
+<ul class="sidebar-links">
+  <li>
+    <a routerLink="/contato" (click)="toogleSidebar($event)">
+      <span>
+        <mat-icon>location_on</mat-icon>
+      </span>
+      <span>Contato e Localização</span>
+    </a>
+  </li>
+  <li>
+    <a routerLink="/mama-hostel-alemanha" (click)="toogleSidebar($event)">
+      <span>
+        <mat-icon>location_city</mat-icon>
+      </span>
+      <span>Mama Alemanhã Hostel</span>
+    </a>
+  </li>
+</ul>

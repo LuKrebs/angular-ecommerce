@@ -1,0 +1,23 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidebar class="sidebar">
+    <sidebar-list (toogledSidebar)="onToogleSidebar($event)">
+    </sidebar-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <toolbar 
+      (toogledSidebar)="onToogleSidebar($event)"
+    >
+    </toolbar>
+
+    <flash-messages></flash-messages>
+    
+    <router-outlet></router-outlet>
+
+
+    <footer></footer>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -8,17 +8,15 @@ import { ProductsService } from '../../../../services/products.service';
 })
 export class TiarasComponent implements OnInit {
 
-  tiaras;
+  products;
 
   constructor(
     private productsService: ProductsService,
   ) { }
 
   ngOnInit() {
-    this.productsService.readByCategory('Tiara').then((response) => {
-      this.tiaras = response;
-      console.log(response); 
-    });
+    this.productsService.readByCategory('tiara')
+      .then(response => this.products = response);
   }
 
 }

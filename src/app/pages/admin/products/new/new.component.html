@@ -30,14 +30,14 @@
         <label for="available">Disponível</label>
         <select class="form-control" 
           id="available" [(ngModel)]="newProduct.available" name="available" required>
-            <option *ngFor="let option of options" [value]="option">{{option}}</option>
+            <option *ngFor="let option of options" [value]="option.value">{{option.text}}</option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="category">Categoria</label>
         <select class="form-control" id="available" name="category" [(ngModel)]="newProduct.category" required>
-          <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+          <option *ngFor="let category of categories" [value]="category.value">{{category.text}}</option>
         </select>
       </div>
 

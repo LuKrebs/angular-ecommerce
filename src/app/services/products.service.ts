@@ -4,6 +4,9 @@ import { AngularFirestore,
          AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { ProductInterface } from '../models/product.model';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/combineLatest';
 
 @Injectable()
 export class ProductsService {
@@ -58,12 +61,18 @@ export class ProductsService {
     return this.products;
   }
 
-  readByCategory(category) {
-    return new Promise((resolve, reject) => {
-      this.afs.collection('products', ref => ref.where('category', '==', category))
-        .valueChanges().subscribe((response) => {
-          resolve(response);
-        });
+  async readByCategory(category) {
+    this.productsCollection = this.afs.collection<ProductInterface>('products',
+      ref => ref.where('category', '==', category).where('available', '==', true));
+
+    this.products = await this.productsCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as ProductInterface;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
     });
+    return this.products;    
   }
+  
 }

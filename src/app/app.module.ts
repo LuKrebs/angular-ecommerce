@@ -30,6 +30,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -53,15 +54,23 @@ import { IndexComponent } from './pages/admin/products/index/index.component';
 import { ProductsService } from './services/products.service';
 import { EditComponent } from './pages/admin/products/edit/edit.component';
 import { TiarasComponent } from './pages/ecommerce/home/tiaras/tiaras.component';
+import { ProductCardComponent } from './shared-components/product-card/product-card.component';
+import { TitleBlockComponent } from './shared-components/title-block/title-block.component';
+import { ProductPageComponent } from './pages/ecommerce/product-page/product-page.component';
 
 // Routes
 const appRoutes: Routes = [
+  // Secure Routes
   { path: 'admin', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
-  { path: 'products', component: IndexComponent, canActivate:[AuthGuard] },
-  { path: 'products/new', component: NewComponent, canActivate:[AuthGuard] },
-  { path: 'products/edit/:productId', component: EditComponent, canActivate:[AuthGuard] },
-  { path: 'product/:productId', component: ShowComponent, canActivate:[AuthGuard] },
+  { path: 'admin/products', component: IndexComponent, canActivate:[AuthGuard] },
+  { path: 'admin/products/new', component: NewComponent, canActivate:[AuthGuard] },
+  { path: 'admin/products/edit/:productId', component: EditComponent, canActivate:[AuthGuard] },
+  { path: 'admin/product/:productId', component: ShowComponent, canActivate:[AuthGuard] },
+  
+  // Open routes
+  { path: 'products/:productId', component: ProductPageComponent },
+  
   { path: '', component: HomeComponent },
   { path: '**', component: AppComponent }
 ];
@@ -83,6 +92,9 @@ const appRoutes: Routes = [
     IndexComponent,
     EditComponent,
     TiarasComponent,
+    ProductCardComponent,
+    TitleBlockComponent,
+    ProductPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,6 +123,7 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
+    MatMenuModule
   ],
   providers: [AuthService, AuthGuard, ProductsService],
   bootstrap: [AppComponent]

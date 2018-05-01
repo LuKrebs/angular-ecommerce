@@ -1,4 +1,4 @@
-<div class="container new-product" *ngIf="product">
+<div class="container edit-product" *ngIf="product">
   <h1>Editar produto</h1>
 
   <div class="row">
@@ -24,14 +24,14 @@
       <div class="form-group">
         <label for="available">Disponível</label>
         <select class="form-control" id="available" [(ngModel)]="product.available" name="available" required>
-          <option *ngFor="let option of options" [value]="option">{{option}}</option>
+          <option *ngFor="let option of options" [value]="option.value">{{option.text}}</option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="category">Categoria</label>
         <select class="form-control" id="available" name="category" [(ngModel)]="product.category" required>
-          <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+          <option *ngFor="let category of categories" [value]="category.value">{{category.text}}</option>
         </select>
       </div>
 

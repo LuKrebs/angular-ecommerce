@@ -13,3 +13,7 @@ p {
 li {
   font-family: 'Merriweather Sans', sans-serif;
 }
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 75px !important;
+}

@@ -17,39 +17,30 @@ export class NewComponent implements OnInit {
   defaultAltImage = "Sonja Baby's | A beleza está nos detalhes";
   submitted = false;
   uploadingImg = false;
+  productModel;
 
   constructor(
     private storage: AngularFireStorage,
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
   ) { 
-    this.newProduct = { 
-      name: '',
-      available: '',
-      category: '',
-      price: '',
-      qty: '',
-      photos: []
-    };
+    this.productModel = new Product();
   }
-
+  
   ngOnInit() {
-    this.options = ['Sim', 'Não'];
-    this.categories = [
-      'Tiara',
-      'Calcinha',
-      'Gravata',
-      'Bico de pato'
-    ]
+    this.options = this.productModel.options;
+    this.categories = this.productModel.categories;
+    this.newProduct = this.productModel.initialValues;
   }
 
   onSubmit() { 
+    console.log(this.newProduct);
     this.submitted = true;
     this.productsService.add(this.newProduct)
       .then((response: any) => {
         console.log(response);
-        this.router.navigate(['/product', response.id])
-    })
+        this.router.navigate(['/admin/product', response.id])
+    });
   }
 
   uploadFile(event) {
@@ -64,4 +55,5 @@ export class NewComponent implements OnInit {
       })
       .catch(err => console.log(err));
   }
+
 }

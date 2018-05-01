@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../../../services/products.service';
 import { ProductInterface } from '../../../../models/product.model';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { Product } from '../../../../models/product.model';
 
 @Component({
   selector: 'app-edit',
@@ -16,6 +17,7 @@ export class EditComponent implements OnInit {
   categories;
   submitted = false;
   uploadingImg = false;
+  productModel;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,16 +26,13 @@ export class EditComponent implements OnInit {
     private router: Router
   ) {
     this.productId = this.activatedRoute.snapshot.paramMap.get('productId');
-    this.options = ['Sim', 'Não'];
-    this.categories = [
-      'Tiara',
-      'Calcinha',
-      'Gravata',
-      'Bico de pato'
-    ]
+    this.productModel = new Product();
    }
 
   ngOnInit() {
+    this.options = this.productModel.options;
+    this.categories = this.productModel.categories;
+
     this.productsService.read(this.productId)
       .then(product => {
         this.product = product;
@@ -54,14 +53,14 @@ export class EditComponent implements OnInit {
       .then((data) => {
         this.uploadingImg = false;
         this.product.photos.push(data.downloadURL);
-      })
+      });
   }
 
 
   updateProduct() {
     this.productsService.update(this.product, this.productId)
       .then((response) => {
-        this.router.navigate(['/product', this.productId])
+        this.router.navigate(['/admin/product', this.productId])
     });
   }
 

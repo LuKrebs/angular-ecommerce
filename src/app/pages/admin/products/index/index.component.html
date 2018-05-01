@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid index-products">
   <div class="row">
     
     <div class="col-sm-12">
@@ -8,7 +8,7 @@
     <div class="col-sm-12" *ngIf="products">
 
       <div class="list-group">
-        <a *ngFor="let product of products | async" routerLink="/product/{{product.id}}" 
+        <a *ngFor="let product of products | async" routerLink="/admin/product/{{product.id}}" 
           class="list-group-item">
           {{ product.name }} | {{ getFormattedValue(product.price) }}
         </a>

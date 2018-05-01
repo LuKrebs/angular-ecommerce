@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../../services/products.service';
+import { Product } from '../../../../models/product.model';
 
 @Component({
   selector: 'app-show',
@@ -12,22 +13,20 @@ export class ShowComponent implements OnInit {
   product;
   options;
   categories;
+  productModel;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private productsService: ProductsService
   ) {
     this.productId = this.activatedRoute.snapshot.paramMap.get('productId');
-    this.options = ['Sim', 'Não'];
-    this.categories = [
-      'Tiara',
-      'Calcinha',
-      'Gravata',
-      'Bico de pato'
-    ]
+    this.productModel = new Product();
   }
 
   ngOnInit() {
+    this.options = this.productModel.options;
+    this.categories = this.productModel.categories;
+
     this.productsService.read(this.productId)
       .then(product => {
         console.log(product);

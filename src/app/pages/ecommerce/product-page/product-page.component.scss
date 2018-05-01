@@ -1,6 +1,33 @@
-.product-page {
+.container-fluid {
   background-color: rgb(252, 193, 255);
   min-height: 100vh;
 
-  
+  .product-section {
+    margin-top: 80px;
+
+    .name, .price, .description {
+      background-color: white;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 16px 12px;
+
+      .product-text {
+        font-family: 'Crimson Text', serif;
+        color: rgb(149, 16, 172);
+        font-weight: 600;
+      }
+      h1 {
+        text-align: center;
+        font-size: 34px;
+        margin: 0;
+      }
+      h4 {
+        text-align: left;
+      }
+    }
+  }
+
+  .cross-selling-section {
+    margin-top: 30px;
+  }
 }

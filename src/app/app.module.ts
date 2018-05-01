@@ -13,6 +13,9 @@ import { AuthGuard } from './guards/auth.guard';
 // Flash messages
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
+// LightboxModule
+import { LightboxModule } from 'angular2-lightbox';
+
 // Directive, Pipes
 import { CurrencyMaskModule } from "ng2-currency-mask";
 
@@ -57,6 +60,7 @@ import { TiarasComponent } from './pages/ecommerce/home/tiaras/tiaras.component'
 import { ProductCardComponent } from './shared-components/product-card/product-card.component';
 import { TitleBlockComponent } from './shared-components/title-block/title-block.component';
 import { ProductPageComponent } from './pages/ecommerce/product-page/product-page.component';
+import { SubtitleBlockComponent } from './shared-components/subtitle-block/subtitle-block.component';
 
 // Routes
 const appRoutes: Routes = [
@@ -95,6 +99,7 @@ const appRoutes: Routes = [
     ProductCardComponent,
     TitleBlockComponent,
     ProductPageComponent,
+    SubtitleBlockComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,7 +128,9 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    // Zoom images
+    LightboxModule,
   ],
   providers: [AuthService, AuthGuard, ProductsService],
   bootstrap: [AppComponent]

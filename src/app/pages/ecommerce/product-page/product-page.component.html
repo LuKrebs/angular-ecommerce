@@ -1,8 +1,46 @@
-<div class="container-fluid product-page">
-  <div class="row">
-    <div class="col-sm-12">
+<div class="container-fluid" *ngIf="product">
 
+  <div class="row product-section">
+    <div class="col-sm-6 selected-photo">
+      <div class="row">
+        <div class="col-sm-12">
+          <img 
+            class="img-responsive img-thumbnail" (click)="open(0)"
+            *ngIf="product.photos" [src]="product.photos[0]">
+        </div>
 
+        <div class="col-xs-6 col-sm-3">
+          <img 
+            class="img-responsive img-thumbnail" (click)="open(1)"
+            *ngIf="product.photos" [src]="product.photos[1]">
+        </div>
+      </div>
     </div>
+
+    <div class="col-sm-6" *ngIf="product.name">
+      <div class="name">
+        <h1 class="product-text">{{ product.name }}</h1>
+      </div>
+    </div>
+    <div class="col-sm-6" *ngIf="product.price">
+      <div class="price">
+        <h1 class="product-text">{{ getFormattedValue(product.price) }}</h1>
+      </div>
+    </div>
+    <div class="col-sm-6" *ngIf="product.price">
+      <div class="description">
+        <h4 class="product-text">Descrição</h4>
+        <p class="product-text"> {{ product.description }} </p>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="cart">
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row cross-selling-section">
+    <subtitle-block [text]="crossSellingText"></subtitle-block>
   </div>
 </div>

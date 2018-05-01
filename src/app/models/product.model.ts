@@ -20,6 +20,7 @@ export class Product {
     category: '',
     price: '',
     qty: 1,
+    description: '',
     photos: [],
   }
 
@@ -31,5 +32,6 @@ export interface ProductInterface {
   available?: boolean,
   price?: number,
   photos?: any,
+  description?: string,
   category?: string,
 }

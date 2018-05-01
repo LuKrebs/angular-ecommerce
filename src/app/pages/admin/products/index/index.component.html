@@ -1,3 +1,19 @@
-<p>
-  index works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    
+    <div class="col-sm-12">
+      <h1>Produtos</h1>
+    </div>
+
+    <div class="col-sm-12" *ngIf="products">
+
+      <div class="list-group">
+        <a *ngFor="let product of products | async" routerLink="/product/{{product.id}}" 
+          class="list-group-item">
+          {{ product.name }} | {{ getFormattedValue(product.price) }}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>

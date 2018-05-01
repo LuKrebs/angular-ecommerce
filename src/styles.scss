@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  padding-bottom: 40px;
+  background-color: rgb(252, 193, 255);
+}
+p {
+    margin: 5px 0 5px;
+    color: white;
+    font-weight: 900;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 18px;
+}
+li {
+  font-family: 'Merriweather Sans', sans-serif;
+}

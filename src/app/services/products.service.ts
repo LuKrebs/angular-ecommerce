@@ -4,7 +4,6 @@ import { AngularFirestore,
          AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { ProductInterface } from '../models/product.model';
-import { reject } from 'q';
 
 @Injectable()
 export class ProductsService {
@@ -40,11 +39,31 @@ export class ProductsService {
 
   update(product: ProductInterface, productId) {
     return new Promise((resolve, reject) => {
-      this.afs.doc<ProductInterface>(`products/${productId}`)
-        .update(product)
-        .then((response) => {
-          console.log(response);
-        });      
+      this.afs.doc<ProductInterface>(`products/${productId}`).update(product)
+        .then((response: any) => {
+          resolve(response);
+        });
+    });
+  }
+
+  async readAll() {
+    this.productsCollection = this.afs.collection<ProductInterface>('products');
+    this.products = await this.productsCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as ProductInterface;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    return this.products;
+  }
+
+  readByCategory(category) {
+    return new Promise((resolve, reject) => {
+      this.afs.collection('products', ref => ref.where('category', '==', category))
+        .valueChanges().subscribe((response) => {
+          resolve(response);
+        });
     });
   }
 }

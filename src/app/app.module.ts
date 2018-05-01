@@ -29,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -51,6 +52,7 @@ import { ShowComponent } from './pages/admin/products/show/show.component';
 import { IndexComponent } from './pages/admin/products/index/index.component';
 import { ProductsService } from './services/products.service';
 import { EditComponent } from './pages/admin/products/edit/edit.component';
+import { TiarasComponent } from './pages/ecommerce/home/tiaras/tiaras.component';
 
 // Routes
 const appRoutes: Routes = [
@@ -80,6 +82,7 @@ const appRoutes: Routes = [
     ShowComponent,
     IndexComponent,
     EditComponent,
+    TiarasComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,6 +110,7 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
+    MatCardModule,
   ],
   providers: [AuthService, AuthGuard, ProductsService],
   bootstrap: [AppComponent]

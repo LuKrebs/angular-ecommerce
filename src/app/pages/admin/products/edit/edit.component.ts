@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../../../services/products.service';
 import { ProductInterface } from '../../../../models/product.model';
 import { AngularFireStorage } from 'angularfire2/storage';
@@ -21,6 +21,7 @@ export class EditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private productsService: ProductsService,
     private storage: AngularFireStorage,
+    private router: Router
   ) {
     this.productId = this.activatedRoute.snapshot.paramMap.get('productId');
     this.options = ['Sim', 'Não'];
@@ -35,17 +36,14 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this.productsService.read(this.productId)
       .then(product => {
-        console.log(product);
         this.product = product;
       });
 
   }
 
   deletePhoto(photoUrl) {
-    console.log(photoUrl);
     var index = this.product.photos.indexOf(photoUrl);
     this.product.photos.splice(index, 1);
-    console.log(this.product.photos);
   }
 
   uploadFile(event) {
@@ -54,18 +52,16 @@ export class EditComponent implements OnInit {
     const filePath = `${new Date()}`;
     this.storage.upload(filePath, file)
       .then((data) => {
-        console.log(data);
         this.uploadingImg = false;
         this.product.photos.push(data.downloadURL);
       })
-      .catch(err => console.log(err));
   }
 
 
   updateProduct() {
     this.productsService.update(this.product, this.productId)
       .then((response) => {
-        console.log(response);
+        this.router.navigate(['/product', this.productId])
     });
   }
 

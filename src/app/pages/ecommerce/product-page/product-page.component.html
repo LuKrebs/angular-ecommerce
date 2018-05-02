@@ -16,28 +16,55 @@
         </div>
       </div>
     </div>
-
-    <div class="col-sm-6" *ngIf="product.name">
-      <div class="name">
-        <h1 class="product-text">{{ product.name }}</h1>
-      </div>
-    </div>
-    <div class="col-sm-6" *ngIf="product.price">
-      <div class="price">
-        <h1 class="product-text">{{ getFormattedValue(product.price) }}</h1>
-      </div>
-    </div>
-    <div class="col-sm-6" *ngIf="product.price">
-      <div class="description">
-        <h4 class="product-text">Descrição</h4>
-        <p class="product-text"> {{ product.description }} </p>
-      </div>
-    </div>
+    
     <div class="col-sm-6">
-      <div class="cart">
-        
+      <div class="row">
+        <div class="col-sm-12" *ngIf="product.name">
+          <div class="name">
+            <h1 class="product-text">{{ product.name }}</h1>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="product.price">
+          <div class="price">
+            <h1 class="product-text">{{ getFormattedValue(product.price) }}</h1>
+          </div>
+        </div>
+
+        <div class="col-sm-12" *ngIf="product.price">
+          <div class="description">
+            <h4 class="product-text">Descrição</h4>
+            <p class="product-text"> {{ product.description }} </p>
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <div class="cart">        
+
+            <div class="qty">
+
+              <div class="buttons">
+                <div (click)="addQty()"><i class="fa fa-plus-circle"></i></div>
+                <p class="qty">{{ qty }}</p>
+                <div (click)="removeQty()"><i class="fa fa-minus-circle"></i></div>
+              </div>
+
+              <div *ngIf="showMaxQtyMessage">Quantidade disponível: {{ product.qty }}</div>
+
+            </div>
+
+            <div class="add-to-cart">
+              <button class="btn btn-sonja btn-block" (click)="addToCart()">
+                <i class="fa fa-shopping-cart"></i> 
+                Adicionar
+              </button>
+            </div>
+          
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
 
   <div class="row cross-selling-section">

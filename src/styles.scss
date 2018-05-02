@@ -17,3 +17,20 @@ li {
 .mat-toolbar-row, .mat-toolbar-single-row {
     height: 75px !important;
 }
+
+// Flash message 
+.fixed-flash-message {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    height: 60px;
+    z-index: 1;
+    top: 0;
+    font-size: 16px;
+    text-align: center;
+    z-index: 2;
+    height: 100px;
+}

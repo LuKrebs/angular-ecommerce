@@ -27,14 +27,13 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.authService.login(this.email, this.password)
       .then((response) => {
-        this.flashMessage.show('Seja bem vindo', {
-          cssClass: 'alert-success', timeout: 10000
-        });
+        console.log('login.component.ts:');
+        console.log(response);
         this.router.navigate(['/dashboard']);
       })
       .catch((err) => {
         this.flashMessage.show(err.message, {
-          cssClass: 'alert-danger', timeout: 10000
+          cssClass: 'alert-danger', timeout: 100000
         });
       });
   }

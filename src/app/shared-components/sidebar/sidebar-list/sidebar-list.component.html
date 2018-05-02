@@ -4,19 +4,52 @@
 
 <ul class="sidebar-links">
   <li>
-    <a routerLink="/contato" (click)="toogleSidebar($event)">
-      <span>
-        <mat-icon>location_on</mat-icon>
-      </span>
-      <span>Contato e Localização</span>
-    </a>
+    <button mat-button [matMenuTriggerFor]="menuOne">
+      Feminino <span class="caret"></span>
+    </button>
+    <mat-menu #menuOne="matMenu">
+      <button mat-menu-item>Tiara</button>
+      <button mat-menu-item>Bico de pato</button>
+      <button mat-menu-item>Calcinha</button>
+      <button mat-menu-item>Sapatinho</button>
+    </mat-menu>
   </li>
   <li>
-    <a routerLink="/mama-hostel-alemanha" (click)="toogleSidebar($event)">
-      <span>
-        <mat-icon>location_city</mat-icon>
-      </span>
-      <span>Mama Alemanhã Hostel</span>
-    </a>
+    <button mat-button [matMenuTriggerFor]="menuTwo">
+      Masculino <span class="caret"></span>
+    </button>
+    <mat-menu #menuTwo="matMenu">
+      <button mat-menu-item>Gravatas</button>
+      <button mat-menu-item>Suspensórios</button>
+    </mat-menu>
+  </li>
+  <li>
+    <button mat-button [matMenuTriggerFor]="menuThree">
+      Informações
+      <span class="caret"></span>
+    </button>
+    <mat-menu #menuThree="matMenu">
+      <button mat-menu-item>Política de entrega</button>
+      <button mat-menu-item>Sobre nós</button>
+      <button mat-menu-item>Como nosso site funciona?</button>
+    </mat-menu>
+  </li>
+  <li>
+    <button mat-button routerLink="/cart" (click)="toogleSidebar($event)">
+      Meu Carrinho
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+    </button>
+  </li>
+  <li *ngIf="isLoggedIn">
+    <button mat-button routerLink="/dashboard" (click)="toogleSidebar($event)">
+      Dashboard
+      <i class="material-icons">&#xE871;</i>
+    </button>
+  </li>
+  <li *ngIf="isLoggedIn">
+    <button mat-button (click)="toogleSidebar($event); logout()">
+      Logout
+      <i class="material-icons">&#xE879;</i>
+    </button>
   </li>
 </ul>

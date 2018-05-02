@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  tiaraTitle = 'Tiaras';
+  tiaraTitle = 'TIARAS';
+  bicoDePatoTitle = 'BICO DE PATO'
+  calcinhaTitle = 'CALCINHAS';
+  sapatinhoTitle = 'SAPATINHOS';
+  gravataTitle = 'GRAVATAS';
 
   constructor() { }
 

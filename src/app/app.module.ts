@@ -61,6 +61,12 @@ import { ProductCardComponent } from './shared-components/product-card/product-c
 import { TitleBlockComponent } from './shared-components/title-block/title-block.component';
 import { ProductPageComponent } from './pages/ecommerce/product-page/product-page.component';
 import { SubtitleBlockComponent } from './shared-components/subtitle-block/subtitle-block.component';
+import { BicoDePatoComponent } from './pages/ecommerce/home/bico-de-pato/bico-de-pato.component';
+import { CalcinhaComponent } from './pages/ecommerce/home/calcinha/calcinha.component';
+import { SapatinhoComponent } from './pages/ecommerce/home/sapatinho/sapatinho.component';
+import { GravataComponent } from './pages/ecommerce/home/gravata/gravata.component';
+import { SuspensorioComponent } from './pages/ecommerce/home/suspensorio/suspensorio.component';
+import { CartComponent } from './pages/ecommerce/cart/cart.component';
 
 // Routes
 const appRoutes: Routes = [
@@ -74,6 +80,7 @@ const appRoutes: Routes = [
   
   // Open routes
   { path: 'products/:productId', component: ProductPageComponent },
+  { path: 'cart', component: CartComponent },
   
   { path: '', component: HomeComponent },
   { path: '**', component: AppComponent }
@@ -100,6 +107,12 @@ const appRoutes: Routes = [
     TitleBlockComponent,
     ProductPageComponent,
     SubtitleBlockComponent,
+    BicoDePatoComponent,
+    CalcinhaComponent,
+    SapatinhoComponent,
+    GravataComponent,
+    SuspensorioComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

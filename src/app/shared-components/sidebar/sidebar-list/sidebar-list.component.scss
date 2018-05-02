@@ -5,35 +5,37 @@
     padding-left: 0;
 
     li {
-        padding: 30px;
-        font-size: 18px;
         position: relative;
-        font-family: 'Nunito', sans-serif;  
 
-        a {
-            position: absolute;
-            bottom: 0;
-            top: 0;
-            left: 0;
+        button {
             width: 100%;
-            text-decoration: none !important;
-            color: black;
-            display: flex;
-            align-items: center;
-
-            &:hover {
-                background-color: rgba(0,0,0,0.1);
-            }
+            padding: 20px 30px;
+            text-align: left;
+            font-family: 'Merriweather Sans', sans-serif;
+            color: rgb(149, 16, 172);
+            font-size: 16px;
+            position: relative;
 
             span {
-                margin-left: 30px;
+                position: absolute;
+                top: 40px;
+                right: 80px;
             }
+
+            .fa-shopping-cart, .material-icons {
+                position: absolute;
+                top: 28px;
+                right: 74px;
+            }
+
         }
+
     }
 
     .sidebar-logo {
         width: 290px;
         margin-bottom: 20px;
+        margin-top: 35px;
         cursor: pointer;
 
         &:hover {

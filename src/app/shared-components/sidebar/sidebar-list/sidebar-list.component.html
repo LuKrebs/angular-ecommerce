@@ -8,10 +8,14 @@
       Feminino <span class="caret"></span>
     </button>
     <mat-menu #menuOne="matMenu">
-      <button mat-menu-item>Tiara</button>
-      <button mat-menu-item>Bico de pato</button>
-      <button mat-menu-item>Calcinha</button>
-      <button mat-menu-item>Sapatinho</button>
+      <button mat-menu-item routerLink="/tiaras" 
+        (click)="toogleSidebar($event)">Tiara</button>
+      <button mat-menu-item routerLink="/bico-de-pato" 
+        (click)="toogleSidebar($event)">Bico de pato</button>
+      <button mat-menu-item routerLink="/calcinhas" 
+        (click)="toogleSidebar($event)">Calcinha</button>
+      <button mat-menu-item routerLink="/sapatinhos" 
+        (click)="toogleSidebar($event)">Sapatinho</button>
     </mat-menu>
   </li>
   <li>
@@ -19,8 +23,10 @@
       Masculino <span class="caret"></span>
     </button>
     <mat-menu #menuTwo="matMenu">
-      <button mat-menu-item>Gravatas</button>
-      <button mat-menu-item>Suspensórios</button>
+      <button mat-menu-item routerLink="/gravatas" 
+        (click)="toogleSidebar($event)">Gravatas</button>
+      <button mat-menu-item routerLink="/suspensorios"
+        (click)="toogleSidebar($event)">Suspensórios</button>
     </mat-menu>
   </li>
   <li>
@@ -29,9 +35,12 @@
       <span class="caret"></span>
     </button>
     <mat-menu #menuThree="matMenu">
-      <button mat-menu-item>Política de entrega</button>
-      <button mat-menu-item>Sobre nós</button>
-      <button mat-menu-item>Como nosso site funciona?</button>
+      <button mat-menu-item routerLink="/deliver-policy" 
+        (click)="toogleSidebar($event)">Política de entrega</button>
+      <button mat-menu-item routerLink="/how-it-works" 
+        (click)="toogleSidebar($event)">Sobre nós</button>
+      <button mat-menu-item routerLink="/about-us" 
+        (click)="toogleSidebar($event)">Como nosso site funciona?</button>
     </mat-menu>
   </li>
   <li>

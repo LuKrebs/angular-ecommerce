@@ -42,6 +42,17 @@ import { AuthService } from './services/auth.service';
 import { LoginComponent } from './pages/admin/login/login.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { HomeComponent } from './pages/ecommerce/home/home.component';
+import { CartComponent } from './pages/ecommerce/cart/cart.component';
+import { TiaraPageComponent } from './pages/ecommerce/woman/tiara-page/tiara-page.component';
+import { BicoDePatoPageComponent } from './pages/ecommerce/woman/bico-de-pato-page/bico-de-pato-page.component';
+import { CalcinhaPageComponent } from './pages/ecommerce/woman/calcinha-page/calcinha-page.component';
+import { SapatinhoPageComponent } from './pages/ecommerce/woman/sapatinho-page/sapatinho-page.component';
+import { GravataPageComponent } from './pages/ecommerce/man/gravata-page/gravata-page.component';
+import { SuspensorioPageComponent } from './pages/ecommerce/man/suspensorio-page/suspensorio-page.component';
+import { AboutUsComponent } from './pages/ecommerce/info/about-us/about-us.component';
+import { DeliverPolicyComponent } from './pages/ecommerce/info/deliver-policy/deliver-policy.component';
+import { HowItWorksComponent } from './pages/ecommerce/info/how-it-works/how-it-works.component';
+
 
 // Components
 import { AppComponent } from './app.component';
@@ -66,7 +77,6 @@ import { CalcinhaComponent } from './pages/ecommerce/home/calcinha/calcinha.comp
 import { SapatinhoComponent } from './pages/ecommerce/home/sapatinho/sapatinho.component';
 import { GravataComponent } from './pages/ecommerce/home/gravata/gravata.component';
 import { SuspensorioComponent } from './pages/ecommerce/home/suspensorio/suspensorio.component';
-import { CartComponent } from './pages/ecommerce/cart/cart.component';
 
 // Routes
 const appRoutes: Routes = [
@@ -80,8 +90,21 @@ const appRoutes: Routes = [
   
   // Open routes
   { path: 'products/:productId', component: ProductPageComponent },
-  { path: 'cart', component: CartComponent },
+    // Woman
+  { path: 'bico-de-pato', component: BicoDePatoPageComponent },
+  { path: 'calcinhas', component: CalcinhaPageComponent },
+  { path: 'sapatinhos', component: SapatinhoPageComponent },
+  { path: 'tiaras', component: TiaraPageComponent },
+    // Man
+  { path: 'gravatas', component: GravataPageComponent },
+  { path: 'suspensorios', component: SuspensorioPageComponent },
+    // Info
+  { path: 'how-it-works', component: HowItWorksComponent },
+  { path: 'deliver-policy', component: DeliverPolicyComponent },
+  { path: 'about-us', component: AboutUsComponent },
   
+  { path: 'cart', component: CartComponent },
+
   { path: '', component: HomeComponent },
   { path: '**', component: AppComponent }
 ];
@@ -113,6 +136,15 @@ const appRoutes: Routes = [
     GravataComponent,
     SuspensorioComponent,
     CartComponent,
+    TiaraPageComponent,
+    BicoDePatoPageComponent,
+    CalcinhaPageComponent,
+    SapatinhoPageComponent,
+    GravataPageComponent,
+    SuspensorioPageComponent,
+    AboutUsComponent,
+    DeliverPolicyComponent,
+    HowItWorksComponent,
   ],
   imports: [
     BrowserModule,

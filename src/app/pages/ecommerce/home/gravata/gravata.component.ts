@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../../../services/products.service';
 
 @Component({
   selector: 'gravata',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GravataComponent implements OnInit {
 
-  constructor() { }
+  products;
+
+  constructor(
+    private productsService: ProductsService,
+  ) { }
 
   ngOnInit() {
+    this.productsService.readByCategory('gravata')
+      .then(response => this.products = response);
   }
 
 }

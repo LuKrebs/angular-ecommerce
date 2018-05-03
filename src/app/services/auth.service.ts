@@ -16,13 +16,13 @@ export class AuthService {
       this.afAuth.auth.signInWithEmailAndPassword(email, password)
         .then(userData => {
           this.flashMessage.show('Seja bem vindo', {
-            cssClass: 'alert-success fixed-flash-message', timeout: 100000
+            cssClass: 'alert-success fixed-flash-message', timeout: 4000
           });
           resolve(userData);
         })
         .catch(err => {
           this.flashMessage.show(err.message, {
-            cssClass: 'alert-danger fixed-flash-message', timeout: 100000
+            cssClass: 'alert-danger fixed-flash-message', timeout: 4000
           });
           resolve(err);
         })

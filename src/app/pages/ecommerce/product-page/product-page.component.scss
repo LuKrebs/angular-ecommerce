@@ -1,3 +1,11 @@
+.btn-sonja {
+  background-color: #9510ac;
+  border-color: #9510ac;
+  color: white;
+  font-weight: 600;
+}
+
+
 .container-fluid {
   background-color: rgb(252, 193, 255);
   min-height: 100vh;
@@ -70,6 +78,15 @@
           font-weight: 600;
         }
       }
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 16px 12px;
     }
   }
 

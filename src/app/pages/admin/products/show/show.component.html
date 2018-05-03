@@ -2,7 +2,7 @@
 
   <div class="row show-product">
     <div class="col-sm-12">
-      <a routerLink="/admin/products/edit/{{productId}}" class="btn btn-primary">Editar produto</a>
+      <h1>{{product.name}}</h1>
     </div>
   </div>
 
@@ -49,15 +49,8 @@
           <option *ngFor="let category of categories" [value]="category.value">{{category.text}}</option>
         </select>
       </div>
-
-      <div class="form-group">
-        <label>Upload FOTOS</label>
-        <input readonly type="file" (change)="uploadFile($event)" />
-        <div *ngIf="uploadingImg">Aguarde...</div>
-      </div>
-
-      <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Cadastrar
-      </button>
+      
+      <a routerLink="/admin/products/edit/{{productId}}" class="btn btn-primary">Editar produto</a>
     </form>
 
   </div>

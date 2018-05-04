@@ -1,3 +1,12 @@
-.index-products {
-  margin-top: 60px;
+.products {
+  min-height: 100vh;
+  background-color: rgb(252, 193, 255);
+  
+  .products-section {
+    margin-top: 80px;
+
+    h1 {
+      margin: 20px 5px;
+    }
+  }
 }

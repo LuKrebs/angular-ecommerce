@@ -1,8 +1,14 @@
 .edit-product {
-  margin-top: 60px;
+  min-height: 100vh;
+  background-color: rgb(252, 193, 255);
+
+  .edit-title {
+    margin-top: 60px;
+  }
 
   .edit-product-photos {
     margin-top: 20px;
+    margin-bottom: 100px;
   
     .photo-section {
       display: flex;

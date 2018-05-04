@@ -39,7 +39,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AuthService } from './services/auth.service';
 
 // Pages
-import { LoginComponent } from './pages/admin/login/login.component';
+import { LoginAdminComponent } from './pages/admin/login/login.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { HomeComponent } from './pages/ecommerce/home/home.component';
 import { CartComponent } from './pages/ecommerce/cart/cart.component';
@@ -77,11 +77,13 @@ import { CalcinhaComponent } from './pages/ecommerce/home/calcinha/calcinha.comp
 import { SapatinhoComponent } from './pages/ecommerce/home/sapatinho/sapatinho.component';
 import { GravataComponent } from './pages/ecommerce/home/gravata/gravata.component';
 import { SuspensorioComponent } from './pages/ecommerce/home/suspensorio/suspensorio.component';
+import { SignInComponent } from './pages/ecommerce/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/ecommerce/sign-up/sign-up.component';
 
 // Routes
 const appRoutes: Routes = [
   // Secure Routes
-  { path: 'admin', component: LoginComponent },
+  { path: 'admin', component: LoginAdminComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
   { path: 'admin/products', component: IndexComponent, canActivate:[AuthGuard] },
   { path: 'admin/products/new', component: NewComponent, canActivate:[AuthGuard] },
@@ -104,6 +106,8 @@ const appRoutes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   
   { path: 'cart', component: CartComponent },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'sign-up', component: SignUpComponent },
 
   { path: '', component: HomeComponent },
   { path: '**', component: AppComponent }
@@ -112,7 +116,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    LoginAdminComponent,
     DashboardComponent,
     HomeComponent,
     SidebarComponent,
@@ -145,6 +149,8 @@ const appRoutes: Routes = [
     AboutUsComponent,
     DeliverPolicyComponent,
     HowItWorksComponent,
+    SignInComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

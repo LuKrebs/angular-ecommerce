@@ -4,11 +4,11 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginAdminComponent implements OnInit {
   email: string;
   password: string;
 

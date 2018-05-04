@@ -1,6 +1,44 @@
 <div class="container-fluid cart-container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 cart-section">
+
+      <h1 class="cart-title">Meu carrinho</h1>
+
+      <table class="table table-hover table-cart" *ngIf="cartProducts">
+        <thead>
+          <tr>
+            <th scope="col">Produto</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Unidades</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of cartProducts;index as index">
+            <td class="text-center product-photo">
+              <img class="img-responsive img-thumbnail img-cart" 
+                   [src]="product.photos[0]" [alt]="defaultAltImage">
+              {{ product.name }}
+            </td>
+            <td>{{ getFormattedValue(product.price) }}</td>
+            <td>
+              <div class="product-qty">
+                <div (click)="addQty(product)"><i class="fa fa-plus-circle"></i></div>
+                <span>{{ product.cartQty }}</span>
+                <div (click)="removeQty(product)"><i class="fa fa-minus-circle"></i></div>
+              </div>
+              <div *ngIf="product.showMaxQtyMessage">Quantidade disponível: {{ product.qty }}</div>
+            </td>
+            <td>{{ getFormattedValue((product.price * product.cartQty)) }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row">
+        <div class="col-sm-12 text-left cart-total-value">
+          <h2>Valor total: {{ getFormattedValue(purchaseTotalAmount) }}</h2>
+        </div>
+      </div>
 
     </div>
   </div>

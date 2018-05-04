@@ -13,6 +13,13 @@
   .product-section {
     margin-top: 80px;
 
+    .main-photo {
+      margin-bottom: 10px;
+    }
+    .small-photos {
+      margin-bottom: 10px;
+    }
+
     .name, .price, .description, .cart {
       background-color: white;
       border-radius: 5px;

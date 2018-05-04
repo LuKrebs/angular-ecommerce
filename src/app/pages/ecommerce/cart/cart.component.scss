@@ -1,5 +1,13 @@
+.btn-sonja {
+  background-color: #9510ac;
+  border-color: #9510ac;
+  color: white;
+  font-weight: 600;
+}
+
 .cart-container {
-  background-color: rgb(252, 193, 255);
+  // background-color: rgb(252, 193, 255);
+  background-color: #FCFBE3;
   min-height: 100vh;
 
   .cart-section {
@@ -51,6 +59,13 @@
       h2 {
         padding: 20px 8px;
       }
+    }
+    .purchase-button {
+      padding: 20px 8px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

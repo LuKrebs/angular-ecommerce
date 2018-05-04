@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-sm-12 cart-section">
 
-      <h1 class="cart-title">Meu carrinho</h1>
+      <h1 class="cart-title" *ngIf="cartHasItens">Meu carrinho</h1>
+      <h1 class="cart-title" *ngIf="!cartHasItens">Seu carrinho está vazio</h1>
 
       <table class="table table-hover table-cart" *ngIf="cartProducts">
         <thead>
@@ -22,12 +23,14 @@
             </td>
             <td>{{ getFormattedValue(product.price) }}</td>
             <td>
-              <div class="product-qty">
-                <div (click)="addQty(product)"><i class="fa fa-plus-circle"></i></div>
-                <span>{{ product.cartQty }}</span>
-                <div (click)="removeQty(product)"><i class="fa fa-minus-circle"></i></div>
+              <div>
+                <div class="product-qty">
+                  <div (click)="addQty(product)"><i class="fa fa-plus-circle"></i></div>
+                  <span>{{ product.cartQty }}</span>
+                  <div (click)="removeQty(product)"><i class="fa fa-minus-circle"></i></div>
+                </div>
+                <div *ngIf="product.showMaxQtyMessage">Quantidade disponível: {{ product.qty }}</div>
               </div>
-              <div *ngIf="product.showMaxQtyMessage">Quantidade disponível: {{ product.qty }}</div>
             </td>
             <td>{{ getFormattedValue((product.price * product.cartQty)) }}</td>
           </tr>
@@ -35,8 +38,14 @@
       </table>
 
       <div class="row">
-        <div class="col-sm-12 text-left cart-total-value">
+        <div class="col-sm-6 text-left cart-total-value">
           <h2>Valor total: {{ getFormattedValue(purchaseTotalAmount) }}</h2>
+        </div>
+
+        <div class="col-sm-6 text-left purchase-button">
+          <button class="btn btn-sonja">
+            Finalizar compra
+          </button>
         </div>
       </div>
 

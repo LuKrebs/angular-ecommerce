@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gravata-page.component.scss']
 })
 export class GravataPageComponent implements OnInit {
-
+  gravataTitle = 'GRAVATAS';
+  
   constructor() { }
 
   ngOnInit() {

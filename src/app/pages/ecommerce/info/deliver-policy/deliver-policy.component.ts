@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deliver-policy.component.scss']
 })
 export class DeliverPolicyComponent implements OnInit {
+  deliverPolicyTitle = 'POLÍTICA DE ENTREGA';
 
   constructor() { }
 

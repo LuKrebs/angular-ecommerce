@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
+import { ShippingRateService } from '../../../services/shipping-rate.service';
 
 @Component({
   selector: 'app-cart',
@@ -18,6 +19,7 @@ export class CartComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
+    private shippingRateService: ShippingRateService,
   ) { 
     this.cartHasItens = false;
     this.cartAsObject = {};
@@ -50,6 +52,25 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.shippingRateService.getShippingRates()
+      .then(response => {
+        console.log(response);
+      });
+
+    // var parser = new Parser({ 'async': true, 'attrkey': '@', 'explicitArray': false });
+
+      // parser.parseString(data, (err, xml) => {
+      //   if (err) {
+      //     return console.log('Erro ', err);
+      //   }
+
+      //   for (var i = 0; i < xml.Servicos.cServico.length; i++) {
+      //     var row = xml.Servicos.cServico[i];
+
+      //     console.log(JSON.stringify(row, null, 2));
+      //   };
+      // });
+
   }
 
   addQty(product) {

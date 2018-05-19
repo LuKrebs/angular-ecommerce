@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tiara-page.component.scss']
 })
 export class TiaraPageComponent implements OnInit {
+  tiaraTitle = 'TIARAS';
 
   constructor() { }
 

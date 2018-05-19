@@ -61,7 +61,21 @@ export class ProductsService {
     return this.products;
   }
 
-  async readByCategory(category, qty) {
+  async readAllByCategory(category) {
+    this.productsCollection = this.afs.collection<ProductInterface>('products',
+      ref => ref.where('category', '==', category).where('available', '==', true));
+
+    this.products = await this.productsCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as ProductInterface;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    return this.products;    
+  }
+
+  async readLimitByCategory(category, qty) {
     this.productsCollection = this.afs.collection<ProductInterface>('products',
       ref => ref.where('category', '==', category).where('available', '==', true).limit(qty));
 

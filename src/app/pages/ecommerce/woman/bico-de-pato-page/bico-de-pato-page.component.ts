@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bico-de-pato-page.component.scss']
 })
 export class BicoDePatoPageComponent implements OnInit {
-
+  bicoDePatoTitle = 'BICO DE PATO'
+  
   constructor() { }
 
   ngOnInit() {

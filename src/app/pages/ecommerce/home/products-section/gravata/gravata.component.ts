@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductsService } from '../../../../../services/products.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { ProductsService } from '../../../../../services/products.service';
   styleUrls: ['./gravata.component.scss']
 })
 export class GravataComponent implements OnInit {
-
+  @Input('qty-to-show') qty: number;
   products;
 
   constructor(
@@ -15,8 +15,13 @@ export class GravataComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.productsService.readByCategory('gravata', 8)
-      .then(response => this.products = response);
+    if (this.qty) {
+      this.productsService.readLimitByCategory('gravata', this.qty)
+        .then(response => this.products = response);
+    } else {
+      this.productsService.readAllByCategory('gravata')
+        .then(response => this.products = response);
+    }
   }
 
 }

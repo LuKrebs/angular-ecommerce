@@ -15,7 +15,7 @@ export class CalcinhaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.productsService.readByCategory('calcicha', 4)
+    this.productsService.readLimitByCategory('calcicha', 4)
       .then(response => this.products = response);
   }
 

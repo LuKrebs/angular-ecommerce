@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 // Routing
 import { RouterModule, Routes } from '@angular/router';
@@ -53,7 +54,6 @@ import { AboutUsComponent } from './pages/ecommerce/info/about-us/about-us.compo
 import { DeliverPolicyComponent } from './pages/ecommerce/info/deliver-policy/deliver-policy.component';
 import { HowItWorksComponent } from './pages/ecommerce/info/how-it-works/how-it-works.component';
 
-
 // Components
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './shared-components/sidebar/sidebar.component';
@@ -79,6 +79,7 @@ import { GravataComponent } from './pages/ecommerce/home/products-section/gravat
 import { SuspensorioComponent } from './pages/ecommerce/home/products-section/suspensorio/suspensorio.component';
 import { SignInComponent } from './pages/ecommerce/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/ecommerce/sign-up/sign-up.component';
+import { ShippingRateService } from './services/shipping-rate.service';
 
 // Routes
 const appRoutes: Routes = [
@@ -94,15 +95,13 @@ const appRoutes: Routes = [
   { path: 'products/:productId', component: ProductPageComponent },
     // Woman
   { path: 'bico-de-pato', component: BicoDePatoPageComponent },
-  { path: 'calcinhas', component: CalcinhaPageComponent },
   { path: 'sapatinhos', component: SapatinhoPageComponent },
   { path: 'tiaras', component: TiaraPageComponent },
     // Man
   { path: 'gravatas', component: GravataPageComponent },
-  { path: 'suspensorios', component: SuspensorioPageComponent },
     // Info
   { path: 'how-it-works', component: HowItWorksComponent },
-  { path: 'deliver-policy', component: DeliverPolicyComponent },
+  { path: 'politica-de-entrega', component: DeliverPolicyComponent },
   { path: 'about-us', component: AboutUsComponent },
   
   { path: 'cart', component: CartComponent },
@@ -110,7 +109,7 @@ const appRoutes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
 
   { path: '', component: HomeComponent },
-  { path: '**', component: AppComponent }
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
@@ -157,6 +156,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpModule,
     // Firebase
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -183,7 +183,7 @@ const appRoutes: Routes = [
     // Zoom images
     LightboxModule,
   ],
-  providers: [AuthService, AuthGuard, ProductsService],
+  providers: [AuthService, AuthGuard, ProductsService, ShippingRateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

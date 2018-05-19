@@ -2,13 +2,14 @@
   z-index: 2;
   background-color: transparent;
   position: fixed;
+  background-color: rgba(240,240,240, 0.8);
 
   .toolbar-material-icon {
     width: 34px;
     height: 34px;
     font-size: 34px;
     cursor: pointer;
-    color: white;
+    color: #9510ac;
 
     &:hover {
         opacity: 0.75;

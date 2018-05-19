@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../../../../services/products.service';
+import { ProductsService } from '../../../../../services/products.service';
 
 @Component({
   selector: 'calcinha',
@@ -15,7 +15,7 @@ export class CalcinhaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.productsService.readByCategory('calcicha')
+    this.productsService.readByCategory('calcicha', 4)
       .then(response => this.products = response);
   }
 

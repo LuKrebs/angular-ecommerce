@@ -61,9 +61,9 @@ export class ProductsService {
     return this.products;
   }
 
-  async readByCategory(category) {
+  async readByCategory(category, qty) {
     this.productsCollection = this.afs.collection<ProductInterface>('products',
-      ref => ref.where('category', '==', category).where('available', '==', true));
+      ref => ref.where('category', '==', category).where('available', '==', true).limit(qty));
 
     this.products = await this.productsCollection.snapshotChanges().map(actions => {
       return actions.map(a => {

@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
 
   constructor(
     private productService: ProductsService,
-    private shippingRateService: ShippingRateService,
+    private shippingRateService: ShippingRateService
   ) { 
     this.cartHasItens = false;
     this.cartAsObject = {};
@@ -52,25 +52,8 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.shippingRateService.getShippingRates()
-      .then(response => {
-        console.log(response);
-      });
-
-    // var parser = new Parser({ 'async': true, 'attrkey': '@', 'explicitArray': false });
-
-      // parser.parseString(data, (err, xml) => {
-      //   if (err) {
-      //     return console.log('Erro ', err);
-      //   }
-
-      //   for (var i = 0; i < xml.Servicos.cServico.length; i++) {
-      //     var row = xml.Servicos.cServico[i];
-
-      //     console.log(JSON.stringify(row, null, 2));
-      //   };
-      // });
-
+    this.shippingRateService.getShippingRate()
+      .then((data) => console.log(data));
   }
 
   addQty(product) {
